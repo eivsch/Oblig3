@@ -1,17 +1,17 @@
 /*
 
-Programmering høst 2013
+Programmering hï¿½st 2013
 Obligatorsik Oppgave 3
 Oppgave 1
 
 Gruppemedlemer:
 Eivind Schulstad	(s198752)
-Gretar Ævarsson		(s198586)
-Sigurd Hølleland	(s198597)
+Gretar ï¿½varsson		(s198586)
+Sigurd Hï¿½lleland	(s198597)
 
 Klassen Gruppemedlem skal ha to datafelt for henholdsvis navn og klasse.
 Videre skal den ha:
-	- en konstruktør som mottar datafeltenes initialverdier via parametre.
+	- en konstruktï¿½r som mottar datafeltenes initialverdier via parametre.
 	- get-metoder for datafeltene
 
 Definer klassen Gruppemedlem.
@@ -39,3 +39,5 @@ public class Gruppemedlem
 	}
 
 }	// end of klasse Gruppemedlem
+
+// edit test
