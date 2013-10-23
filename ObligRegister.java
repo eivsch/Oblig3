@@ -55,8 +55,18 @@ public class ObligRegister
 
     for( int i = 0; i < studenter.length; i++ )
     {
-			if( studenter[i].getNavn().equals(navn) )
+			//Gretar commit:
+			if( studenter[i] == null )
+				return -1;
+			else if( studenter[i].getNavn().equals(navn) )
 				return i;
+
+
+			//Old version:
+			/*
+			if( studenter[i].getNavn().equals(navn) )
+			return i;
+			*/
 		}
 
 		return -1;
@@ -71,22 +81,39 @@ public class ObligRegister
     //   i arrayen som nye studenter.  >
 
     //henter deltakere for oppg
-    Gruppemedlem[] deltakere = new Gruppemedlem[ (oppg.getDeltakere()).length ];
+    Gruppemedlem[] deltakere = new Gruppemedlem[ ( oppg.getDeltakere() ).length ];
     deltakere = oppg.getDeltakere();
 
+
+
     for( int i = 0; i < deltakere.length; i++ )
-    {       //dersom noen av deltakerne ikke eksisterer i student-arrayet, må det opprettes et nytt Student objekt
-            if(posisjon( deltakere[i].getNavn() ) == -1 )
-            {
-                Student s = new Student(deltakere[i].getNavn(), deltakere[i].getKlasse(), antallObliger);
-                nyStudent(s);
-            }
+    {
+			//dersom noen av deltakerne ikke eksisterer i student-arrayet, må det opprettes et nytt Student objekt
+
+
+			if( posisjon( deltakere[i].getNavn() ) == -1 )
+			{
+				Student s = new Student( deltakere[i].getNavn(), deltakere[i].getKlasse(), antallObliger );
+				nyStudent( s );
+
+				// Gretar commit:
+				s.innlevering(oppg);
+
+
+			}
     }
+
+    //Old version:
+    /*
+
     //nå vil alle studentene i oppg være registrert, og ha en indeks. Vi finner indeksen og registrerer obligen på indeksen
     for(int j = 0; j < deltakere.length; j++)
     {
-        studenter[posisjon(deltakere[j].getNavn())].innlevering(oppg);
+        studenter[posisjon( deltakere[j].getNavn() )].innlevering(oppg);
+
     }
+
+    */
 
   }
 
@@ -100,7 +127,22 @@ public class ObligRegister
        mangler for å kunne gjøre det.  >
     */
 
+		//Gretar commit: vi må ha en for-løkke for hele studenter arrayen
+		for( int i = 0; i < studenter.length; i++ )
+		{
+			if( studenter[i].getNavn().equals(navn) )
+				return studenter[i].toString();
+		}
+
+		return studenter[ posisjon( navn )].toString();
+
+
+
+
+		//old version:
+		/*
     return studenter[ posisjon( navn )].toString();
+		*/
 
   }
 
