@@ -91,6 +91,9 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
     antallPerGruppe = antPrGruppe;
   }
 
+
+
+
   private Gruppemedlem[] lesGruppe()   // hjelpemetode
   {
     /*<  Metoden skal opprette og returnere en array, av typen Gruppemedlem,
