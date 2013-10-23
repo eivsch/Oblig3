@@ -1,13 +1,13 @@
 /*
 
-Programmering høst 2013
+Programmering hÃ¸st 2013
 Obligatorsik Oppgave 3
 Oppgave 3
 
 Gruppemedlemer:
 Eivind Schulstad	(s198752)
-Gretar Ævarsson		(s198586)
-Sigurd Hølleland	(s198597)
+Gretar Ã†varsson		(s198586)
+Sigurd HÃ¸lleland	(s198597)
 
 a) Programmer metoden public void nyStudent( Student s ) { ... }.
 b) Programmer metoden private int posisjon( String navn) { ... }
@@ -27,7 +27,7 @@ public class ObligRegister
 
 	public ObligRegister(int antStud, int antOblig)
   {
-    //<  Foretar nødvendig initialisering av datafeltene. >
+    //<  Foretar nÃ¸dvendig initialisering av datafeltene. >
     studenter = new Student[antStud];
     antallObliger = antOblig;
   }
@@ -39,12 +39,16 @@ public class ObligRegister
   {
    	//< Setter objektet s, som metoden mottar som parameter, inn i arrayen
     //  studenter. Du kan forutsette at det er plass i arrayen.  >
+       //Eivind commit
 		for( int i = 0; i < studenter.length; i++ )
 		{
-			if( studenter[i] == null )
-				studenter[i] = s;
+			if (studenter[i] == null)
+			{
+			  studenter[i] = s;
+              break;
+		    }
 		}
-	}
+  }
 
 
 
@@ -76,8 +80,8 @@ public class ObligRegister
 
   public void registrer( Oblig oppg )
   {
-    //<  Registrerer oppgaven oppg på ALLE studentene i gruppen som har levert oppgaven.
-    //   Dersom noen av disse ikke på forhånd finnes i arrayen studenter, må de tilføyes
+    //<  Registrerer oppgaven oppg pÃ¥ ALLE studentene i gruppen som har levert oppgaven.
+    //   Dersom noen av disse ikke pÃ¥ forhÃ¥nd finnes i arrayen studenter, mÃ¥ de tilfÃ¸yes
     //   i arrayen som nye studenter.  >
 
     //henter deltakere for oppg
@@ -88,7 +92,7 @@ public class ObligRegister
 
     for( int i = 0; i < deltakere.length; i++ )
     {
-			//dersom noen av deltakerne ikke eksisterer i student-arrayet, må det opprettes et nytt Student objekt
+			//dersom noen av deltakerne ikke eksisterer i student-arrayet, mÃ¥ det opprettes et nytt Student objekt
 
 
 			if( posisjon( deltakere[i].getNavn() ) == -1 )
@@ -98,15 +102,20 @@ public class ObligRegister
 
 				// Gretar commit:
 				s.innlevering(oppg);
-
-
 			}
+
+            //eivind commit - hvis studenten finnes sÃ¥ levers oppg
+			else if ( posisjon( deltakere[i].getNavn() ) != -1 )
+			{
+               studenter[posisjon( deltakere[i].getNavn() )].innlevering(oppg);
+			}
+
     }
 
     //Old version:
     /*
 
-    //nå vil alle studentene i oppg være registrert, og ha en indeks. Vi finner indeksen og registrerer obligen på indeksen
+    //nÃ¥ vil alle studentene i oppg vÃ¦re registrert, og ha en indeks. Vi finner indeksen og registrerer obligen pÃ¥ indeksen
     for(int j = 0; j < deltakere.length; j++)
     {
         studenter[posisjon( deltakere[j].getNavn() )].innlevering(oppg);
@@ -123,11 +132,11 @@ public class ObligRegister
   {
     /*<  Returnerer opplysninger om studenten med navn lik parameterverdien,
        dvs. navn og klasse, samt opplysninger om hvilke oppgaver som er godkjent,
-       og om vedkommende kan gå opp til eksamen, eventuelt hvor mange oppgaver som
-       mangler for å kunne gjøre det.  >
+       og om vedkommende kan gÃ¥ opp til eksamen, eventuelt hvor mange oppgaver som
+       mangler for Ã¥ kunne gjÃ¸re det.  >
     */
 
-		//Gretar commit: vi må ha en for-løkke for hele studenter arrayen
+		//Gretar commit: vi mÃ¥ ha en for-lÃ¸kke for hele studenter arrayen
 		for( int i = 0; i < studenter.length; i++ )
 		{
 			if( studenter[i].getNavn().equals(navn) )
@@ -163,8 +172,8 @@ public class ObligRegister
   {
 		/* <  Returner en ny array som, for hver student i klasse, inneholder opplysninger
 			 om navn og klasse, samt opplysninger om hvilke oppgaver som er godkjent, og om
-			 vedkommende kan gå opp til eksamen, eventuelt hvor mange oppgaver som mangler
-			 for å kunne gjøre det.  >
+			 vedkommende kan gÃ¥ opp til eksamen, eventuelt hvor mange oppgaver som mangler
+			 for Ã¥ kunne gjÃ¸re det.  >
 		*/
 
 		String[] output = new String[antKlasse(klasse)];
