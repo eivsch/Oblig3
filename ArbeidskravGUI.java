@@ -1,13 +1,13 @@
 /*
 
-Programmering hÃ¸st 2013
+Programmering høst 2013
 Obligatorsik Oppgave 3
 Oppgave 4
 
 Gruppemedlemer:
 Eivind Schulstad	(s198752)
-Gretar Ã†varsson		(s198586)
-Sigurd HÃ¸lleland	(s198597)
+Gretar Ævarsson		(s198586)
+Sigurd Hølleland	(s198597)
 
 a) Programmer metoden private Gruppemedlem[] lesGruppe(){ ... }
 b) Programmer metoden public void registrer() { ... }
@@ -121,7 +121,7 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
 
   public void registrer()
   {
-    /*<  Registrerer en innlevering av en oblig utfra  data i skjermbildets Ã¸vre halvdel.
+    /*<  Registrerer en innlevering av en oblig utfra  data i skjermbildets øvre halvdel.
        Hvorvidt oppgaven er godkjent eller ikke, kan avleses ved hjelp av setningen:
        boolean b = godkjent.isSelected();  >
     */
@@ -129,6 +129,7 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
     Oblig oppgave = new Oblig( lesGruppe(), Integer.parseInt( obligNr.getText() ), godkjent.isSelected() );
 
     kartotek.registrer( oppgave );
+
   }
 
 
@@ -137,9 +138,9 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
 
   public void sjekkGodkjenning()
   {
-    /*<  Leser inn navn (fra tekstfeltet person) og skriver i tekstomrÃ¥det output opplysninger
-       om hvilke oppgaver som er godkjent, og om vedkommende kan gÃ¥ opp til eksamen,
-       eventuelt hvor mange oppgaver som mangler for Ã¥ kunne gjÃ¸re det.  >
+    /*<  Leser inn navn (fra tekstfeltet person) og skriver i tekstområdet output opplysninger
+       om hvilke oppgaver som er godkjent, og om vedkommende kan gå opp til eksamen,
+       eventuelt hvor mange oppgaver som mangler for å kunne gjøre det.  >
     */
 
 
@@ -152,7 +153,7 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
 
   public void skrivListe()
   {
-    /*<  Skriver i tekstomrÃ¥det output en liste over alle registrerte opplysninger om
+    /*<  Skriver i tekstområdet output en liste over alle registrerte opplysninger om
        studenter i en bestemt klasse (fra tekstfeltet kl).  >
     */
 
@@ -168,7 +169,7 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
 
   public void actionPerformed( ActionEvent e )
   {
-    //< Metoden skal sÃ¸rge for at riktig oppgave utfÃ¸res avhengig av knappen det er klikket pÃ¥ >
+    //< Metoden skal sørge for at riktig oppgave utføres avhengig av knappen det er klikket på >
     if (e.getSource() == reg)
       registrer();
     else if (e.getSource() == sjekk)
