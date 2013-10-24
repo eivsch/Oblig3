@@ -14,11 +14,8 @@ b) Programmer metoden public void registrer() { ... }
 c) Programmer metoden public void sjekkGodkjenning() { ... }
 d) Programmer metoden public void skrivListe() { ... }
 e) Programmer metoden void actionPerformed( ActionEvent e ){ ... }
-f) Programmer klassen ArbeidskravDriver som inneholder programmets main-metode.
 
 */
-
-
 
 import java.awt.*;
 import java.awt.event.*;
@@ -32,6 +29,8 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
   private JTextArea output;
   private ObligRegister kartotek;
   private JCheckBox godkjent;
+
+  //hjelpevariabel for antall personer i en gruppe
 	private int antallPerGruppe;
 
   public ArbeidskravGUI(String fag, int antStudenter, int antObliger, int antPrGruppe )
@@ -92,8 +91,6 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
   }
 
 
-
-
   private Gruppemedlem[] lesGruppe()   // hjelpemetode
   {
     /*<  Metoden skal opprette og returnere en array, av typen Gruppemedlem,
@@ -104,19 +101,20 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
 
     Gruppemedlem[] gruppe = new Gruppemedlem[antallPerGruppe];
 
-
-
     for( int i = 0; i < gruppe.length; i++ )
     {
+			if(navn[i].getText().equals(""))
+			{
+			  return gruppe;
+			}
+
 			Gruppemedlem g = new Gruppemedlem( navn[i].getText(), klasse[i].getText() );
 			gruppe[i] = g;
 		}
 
 		return gruppe;
-
-
-
   }
+
 
 
   public void registrer()
@@ -125,14 +123,9 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
        Hvorvidt oppgaven er godkjent eller ikke, kan avleses ved hjelp av setningen:
        boolean b = godkjent.isSelected();  >
     */
-
     Oblig oppgave = new Oblig( lesGruppe(), Integer.parseInt( obligNr.getText() ), godkjent.isSelected() );
-
     kartotek.registrer( oppgave );
-
   }
-
-
 
 
 
@@ -142,13 +135,8 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
        om hvilke oppgaver som er godkjent, og om vedkommende kan gå opp til eksamen,
        eventuelt hvor mange oppgaver som mangler for å kunne gjøre det.  >
     */
-
-
     String navn = person.getText();
-
     output.setText( kartotek.godkjent(navn) );
-
-
   }
 
   public void skrivListe()
@@ -156,16 +144,13 @@ public class ArbeidskravGUI extends JFrame implements ActionListener
     /*<  Skriver i tekstområdet output en liste over alle registrerte opplysninger om
        studenter i en bestemt klasse (fra tekstfeltet kl).  >
     */
-
-
     String[] liste = kartotek.statusListe( kl.getText() );
-
+    output.setText("");
     for( int i = 0; i < liste.length; i++ )
 			output.append( liste[i] );
-
-
-
   }
+
+
 
   public void actionPerformed( ActionEvent e )
   {
